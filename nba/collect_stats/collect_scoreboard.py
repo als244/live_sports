@@ -29,9 +29,10 @@ games = scoreboard["games"]
 my_scoreboard = []
 
 for g in games:
-	game_data = [g["gameId"], g["gameCode"], g["gameTimeUTC"], g["homeTeam"]["teamId"], g["homeTeam"]["teamTricode"], g["awayTeam"]["teamId"], g["awayTeam"]["teamTricode"]]
+	game_data = [g["gameId"], g["gameCode"], g["gameTimeUTC"], g["homeTeam"]["teamCity"] + " " + g["homeTeam"]["teamName"], g["homeTeam"]["teamId"], g["homeTeam"]["teamTricode"], str(g["homeTeam"]["wins"]) + "-" + str(g["homeTeam"]["losses"]), 
+			g["awayTeam"]["teamCity"] + " " + g["awayTeam"]["teamName"], g["awayTeam"]["teamId"], g["awayTeam"]["teamTricode"], str(g["awayTeam"]["wins"]) + "-" + str(g["awayTeam"]["losses"])]
 	my_scoreboard.append(game_data)
 
-scoreboard_df = pd.DataFrame(my_scoreboard, columns=["game_id", "game_code", "game_time_UTC", "home_team_id", "home_team_tricode", "away_team_id", "away_team_tricode"])
+scoreboard_df = pd.DataFrame(my_scoreboard, columns=["game_id", "game_code", "game_time_UTC", "home_team", "home_team_id", "home_team_tricode", "home_record", "away_team", "away_team_id", "away_team_tricode", "away_record"])
 
 pickle.dump(scoreboard_df, open(SCOREBOARD_PREF + "/" + DATE_STR + ".pickle", "wb"))

@@ -21,7 +21,7 @@ BOXSCORE_PREF = "/mnt/storage/data/live_sports/nba/stats/boxscores/"
 if not os.path.exists(BOXSCORE_PREF + DATE_STR):
 	os.makedirs(BOXSCORE_PREF + DATE_STR)
 
-LOOP_FREQ = 30.0
+LOOP_FREQ = 15.0
 
 START_TIME = time.time()
 
@@ -31,6 +31,13 @@ while True:
 	ts = time.time()
 	time_human = datetime.datetime.fromtimestamp(ts).strftime('%H_%M_%S')
 	dt = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	print(dt)
+
+	if datetime.datetime.now().hour < 13:
+		time.sleep(60)
+		continue
+	if datetime.datetime.now().hour > 22:
+		break
 
 	boxscore_rows = []
 

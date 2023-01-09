@@ -10,17 +10,17 @@ from datetime import date
 
 # An api key is emailed to you when you sign up to a plan
 # Get a free API key at https://api.the-odds-api.com/
-API_KEY = '31e4f615972c37f63ab734fa92a2de10'
+API_KEY = '5f7427a67cf56b8e46c42f6aa3671da0'
 SPORT = "basketball_nba"
 REGIONS = 'us' # uk | us | eu | au. Multiple can be specified if comma delimited
 
-MARKETS = 'h2h' # h2h | spreads | totals. Multiple can be specified if comma delimited
+MARKETS = 'h2h,spreads,totals' # h2h | spreads | totals. Multiple can be specified if comma delimited
 
 ODDS_FORMAT = 'decimal' # decimal | american
 
 DATE_FORMAT = 'unix' # iso | unix
 
-LOOP_FREQ = 30.0
+LOOP_FREQ = 15.0
 
 today = date.today()
 

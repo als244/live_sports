@@ -22,7 +22,7 @@ PLAYBYPLAY_PREF = "/mnt/storage/data/live_sports/nba/stats/playbyplay"
 if not os.path.exists(PLAYBYPLAY_PREF + "/" + DATE_STR):
 	os.makedirs(PLAYBYPLAY_PREF + "/" + DATE_STR)
 
-LOOP_FREQ = 30.0
+LOOP_FREQ = 15.0
 
 START_TIME = time.time()
 
@@ -33,6 +33,14 @@ while True:
 	ts = time.time()
 	time_human = datetime.datetime.fromtimestamp(ts).strftime('%H_%M_%S')
 	dt = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	print(dt)
+
+	if datetime.datetime.now().hour < 13:
+		time.sleep(60)
+		continue
+	if datetime.datetime.now().hour > 22:
+		break
+
 
 	action_attributes = ["actionNumber", "clock", "timeActual", "period", "scoreHome", "scoreAway", "teamId", "teamTricode", "actionType", "subType", "descriptor", "description", "personId", "playerName", "isFieldGoal", "shotResult", "x", "y", "area", "areaDetail", "side", "shotDistance", "shotActionNumber", "possession", "edited"]
 	
